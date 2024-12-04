@@ -27,6 +27,7 @@ today = ["chrono"]
 test_lib = []
 
 [dependencies]
+regex = "1.11.1"
 
 # Template dependencies
 chrono = { version = "0.4.38", optional = true }
