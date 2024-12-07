@@ -78,16 +78,9 @@ fn read_protocols(content: &str) -> (HashMap<u32, HashSet<u32>>, Vec<Vec<u32>>) 
 
 fn reorder(orders: &HashMap<u32, HashSet<u32>>, update: &[u32]) -> u32 {
     let mut sorted = update.to_owned();
-    sorted.sort_by(|a, b| {
-        if let Some(b_vals) = orders.get(b) {
-            if b_vals.contains(a) {
-                Ordering::Greater
-            } else {
-                Ordering::Less
-            }
-        } else {
-            Ordering::Less
-        }
+    sorted.sort_by(|a, b| match orders.get(a) {
+        Some(value) if value.contains(b) => Ordering::Greater,
+        _ => Ordering::Less,
     });
     sorted[update.len() / 2]
 }
