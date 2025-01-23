@@ -1,5 +1,7 @@
 advent_of_code::solution!(9);
 
+const TRIANGLE: [usize; 10] = [0, 0, 1, 3, 6, 10, 15, 21, 28, 36];
+
 #[derive(Debug)]
 enum DiskEntry {
     FreeSpace { size: usize },
@@ -126,7 +128,7 @@ fn check_sum(memory: &[DiskEntry]) -> usize {
         match *block {
             DiskEntry::FreeSpace { size } => position += size,
             DiskEntry::File { id, size } => {
-                result += id * (size * position + size * (size - 1) / 2);
+                result += id * (size * position + TRIANGLE[size]);
                 position += size;
             }
         }
