@@ -30,6 +30,7 @@ test_lib = []
 regex = "1.11.1"
 itertools = "0.13.0"
 rayon = "1.10.0"
+cached = "0.54.0"
 
 # Template dependencies
 chrono = { version = "0.4.38", optional = true }
